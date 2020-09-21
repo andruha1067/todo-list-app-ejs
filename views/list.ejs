@@ -5,6 +5,7 @@
     <title>To Do List</title>
   </head>
   <body>
+      <!-- Render day of the week in format set in app.js kindOfDay -->
       <h1><%= kindOfDay %></h1>
 
       <form action="/" method="post">
@@ -13,6 +14,7 @@
       </form>
 
       <ul>
+        <!-- Add list item for each item added to Todo list by user via ejs listItems -->
         <% for (let i=0; i < listItems.length; i++) { %>
           <li><%= listItems[i] %></li>
         <% } %>
