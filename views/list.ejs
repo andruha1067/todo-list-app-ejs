@@ -1,24 +1,22 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>To Do List</title>
-  </head>
-  <body>
+<%- include("header"); -%>
+    <div class="box" id="heading">
       <!-- Render day of the week in format set in app.js kindOfDay -->
-      <h1><%= kindOfDay %></h1>
+      <h1><%= listTitle %></h1>
+    </div>
 
-      <form action="/" method="post">
-        <input type="text" name="newItem" placeholder="To do item">
-        <button type="submit" name="button">Add To List</button>
+    <div class="box">
+      <!-- Add list item for each item added to Todo list by user via ejs listItems -->
+      <% for (let i=0; i < listItems.length; i++) { %>
+        <div class="item">
+          <input type="checkbox">
+          <p><%= listItems[i] %></p>
+        </div>
+      <% } %>
+
+      <form class="item" action="/" method="post">
+        <input type="text" name="newItem" placeholder="New item" autocomplete="off">
+        <button type="submit" name="list" value=<%= listTitle %>>+</button>
       </form>
-
-      <ul>
-        <!-- Add list item for each item added to Todo list by user via ejs listItems -->
-        <% for (let i=0; i < listItems.length; i++) { %>
-          <li><%= listItems[i] %></li>
-        <% } %>
-      </ul>
-
+    </div>
   </body>
-</html>
+<%- include("footer"); -%>
